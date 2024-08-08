@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { IconVariable, IconSettings, IconRun, IconFolder } from '@tabler/icons';
 
 const SpecialTab = ({ handleCloseClick, type, tabName }) => {

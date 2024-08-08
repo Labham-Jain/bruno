@@ -1,6 +1,6 @@
 import MarkdownIt from 'markdown-it';
 import StyledWrapper from './StyledWrapper';
-import React from 'react';
+import * as React from 'react';
 
 const md = new MarkdownIt();
 

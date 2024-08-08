@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { IconAlertTriangle } from '@tabler/icons';
 import Modal from 'components/Modal';
-import { createPortal } from 'react-dom';
 
-const ConfirmSwitchEnv = ({ onCancel }) => {
-  return createPortal(
+const ConfirmRequestClose = ({ item, onCancel, onCloseWithoutSave, onSaveAndClose }) => {
+  return (
     <Modal
       size="md"
       title="Unsaved changes"
@@ -24,19 +23,27 @@ const ConfirmSwitchEnv = ({ onCancel }) => {
         <IconAlertTriangle size={32} strokeWidth={1.5} className="text-yellow-600" />
         <h1 className="ml-2 text-lg font-semibold">Hold on..</h1>
       </div>
-      <div className="font-normal mt-4">You have unsaved changes in this environment.</div>
+      <div className="font-normal mt-4">
+        You have unsaved changes in request <span className="font-semibold">{item.name}</span>.
+      </div>
 
       <div className="flex justify-between mt-6">
         <div>
-          <button className="btn btn-sm btn-danger" onClick={onCancel}>
-            Close
+          <button className="btn btn-sm btn-danger" onClick={onCloseWithoutSave}>
+            Don't Save
           </button>
         </div>
-        <div></div>
+        <div>
+          <button className="btn btn-close btn-sm mr-2" onClick={onCancel}>
+            Cancel
+          </button>
+          <button className="btn btn-secondary btn-sm" onClick={onSaveAndClose}>
+            Save
+          </button>
+        </div>
       </div>
-    </Modal>,
-    document.body
+    </Modal>
   );
 };
 
-export default ConfirmSwitchEnv;
+export default ConfirmRequestClose;
